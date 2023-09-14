@@ -1,0 +1,194 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Gustiyan Islahuzaman Web</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Gustiyan Islahuzaman</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">Home</a></li>
+							<li><a href="generic.html">About Me</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.linkedin.com/in/gustiyaniz" target="_blank" class="icon brands alt fa-linkedin"><span class="label">Linkedin</span></a></li>
+							<li><a href="https://gustiyaniz.medium.com/" target="_blank" class="icon brands alt fa-medium"><span class="label">Medium</span></a></li>
+							<li><a href="https://t.me/gustiyaniz" target="_blank" class="icon brands alt fa-telegram"><span class="label">Telegram</span></a></li>
+							<li><a href="https://github.com/gustiyaniz/" target="_blank" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<h2><a href="#">Crafting Insights: An Online Retail Sales Dashboard
+									</a></h2>
+								</header>
+								<iframe width="900" height="606" src="https://lookerstudio.google.com/embed/reporting/a4fba52f-ce00-4a9c-ac22-b34c880b3e60/page/onBcD" frameborder="0" style="border:0" allowfullscreen></iframe>
+								<section id="introduction">
+									<h2>Introduction</h2>
+									<p>In today's data-driven world, businesses succeed by making informed decisions. For online retailers, understanding their sales data is essential. I recently had the opportunity to develop a comprehensive portfolio dashboard that provides a bird's-eye view of online retail sales, with a particular focus on my key feature dashboard. This dashboard is divided into four distinct pages: Overview, Country, Customer, and Product. In this article, I will walk you through the process of creating this dashboard, the insights it can provide for your online retail business, and how I cleaned the data using Excel, sourced from the Online Retail dataset, before building the dashboard using Google Looker Studio.</p>
+								</section>
+						
+								<section id="data-source">
+									<h2>Data Source: Understanding the Overview Dataset</h2>
+									<p>Before we dive into the analysis, let's get familiar with the data. The dataset we're using for our online retail sales dashboard has 541,909 rows of transactions. It has 8 attributes and covers transactions between 01/12/2010 and 09/12/2011 for a UK-based online retail store. Here's what each attribute represents:</p>
+									<ul>
+										<li>InvoiceNo: A unique 6-digit number for each transaction. If it starts with 'c,' it's a cancellation.</li>
+										<li>StockCode: A 5-digit number for each product.</li>
+										<li>Description: The name of each product.</li>
+										<li>Quantity: The number of each product per transaction.</li>
+										<li>InvoiceDate: Date and time when each transaction was made.</li>
+										<li>UnitPrice: The price per unit in sterling.</li>
+										<li>CustomerID: A unique 5-digit number for each customer.</li>
+										<li>Country: The customer's residing country.</li>
+									</ul>
+									<p>Understanding the dataset attributes is crucial for our analysis and dashboard insights. Let's proceed to explore and extract valuable information from this online retail sales data.</p>
+								</section>
+						
+								<section id="data-cleaning">
+									<h2>Cleaning Data with Excel</h2>
+									<p>Data cleaning is an important step in the data analysis process. It ensures that the data is accurate and consistent, which is essential for producing reliable insights. The Online Retail dataset, like many real-world datasets, often requires preprocessing and cleaning to remove errors and inconsistencies. Here are some common data cleaning steps:</p>
+									<ul>
+										<li>Remove duplicates: Duplicates in the dataset can skew results. There are a number of ways to identify and remove duplicates, such as using Excel's built-in features or a third-party tool.</li>
+										<li>Handle missing values: Missing values are common in datasets and can disrupt analysis. There are a number of ways to handle missing values, such as imputing data, removing incomplete records, or assigning a default value.</li>
+										<li>Format dates consistently: Consistent date formatting is crucial for time-series analysis. There are a number of ways to standardize date formats, such as using a date parser or a data transformation tool.</li>
+										<li>Transform data as needed: Depending on the dashboard's requirements, certain data transformations may be necessary. There are a number of ways to transform data, such as using Excel's pivot tables or a data manipulation tool.</li>
+									</ul>
+									<p>By investing time in data cleaning, you can ensure that your dashboard provides accurate and reliable insights into online retail sales.</p>
+								</section>
+						
+								<section id="overview-page">
+									<h2>The Overview Page: Key Insights at a Glance</h2>
+									<p>As we embark on this data-driven journey, let's start by exploring the power of our Overview page on the dashboard. This section provides a comprehensive snapshot of the big picture, allowing us to grasp the essential metrics that drive our online retail business to success.</p>
+									<h3>Key Metrics</h3>
+									<ul>
+										<li>Total sales: The total amount of money earned from sales.</li>
+										<li>Total quantity sold: The total number of products sold.</li>
+										<li>Total transactions: The total number of times customers have bought something.</li>
+										<li>Total customers: The total number of people who have bought something from us.</li>
+										<li>Total products: The total number of products we sell.</li>
+									</ul>
+									<h3>Monthly Sales Trends:</h3>
+									<p>This feature allows us to track how sales have evolved over time, identifying seasonality and potential growth opportunities. Understanding these trends is essential for making informed decisions about inventory, marketing campaigns, and overall business strategy.</p>
+									<h3>Comparative Analysis</h3>
+									<ul>
+										<li>Top 5 and bottom 5 countries by sales: Identifying the top-performing and underperforming countries by sales allows us to focus marketing efforts and tailor strategies accordingly.</li>
+										<li>Top 5 and bottom 5 customers by sales: The customers that have generated the most and least sales.</li>
+										<li>Top 5 and bottom 5 products by sales: Discovering our top-selling products provides a foundation for inventory management and product development decisions.</li>
+									</ul>
+								</section>
+						
+								<section id="country-page">
+									<h2>The Country Page: Insights into Geographic Performance</h2>
+									<p>The Country page provides insights into the geographic distribution of your sales. It breaks down sales data by different countries, so you can identify areas of opportunity or concern. You can also use the Country page to track your performance over time and compare it to other countries.</p>
+									
+								</section>
+						
+								<section id="customer-page">
+									<h2>The Customer Page: Unlocking Customer Behavior with RFM Analysis</h2>
+									<p>Your customers are the lifeblood of your online retail business. The Customer page uses RFM analysis to segment customers into groups based on their Recency (how recently they made a purchase), Frequency (how often they make purchases), and Monetary Value (how much money they spend). This allows you to understand customer behavior and preferences, and target them with personalized marketing campaigns.</p>
+									<!-- Add content for the Customer Page as needed -->
+								</section>
+						
+								<section id="product-page">
+									<h2>The Product Page: Analyzing Product Performance</h2>
+									<p>The Product page provides insights into the performance of your products. It uses visualizations, such as bar charts, bubble charts, and tables, to help you understand which products are selling the most, their average prices, and the revenue they generate.</p>
+									<!-- Add content for the Product Page as needed -->
+								</section>
+						
+								<section id="conclusion">
+									<h2>Conclusion</h2>
+									<p>In today's competitive online retail landscape, having access to a comprehensive dashboard can make all the difference. My four-page dashboard, consisting of the Overview, Country, Customer, and Product pages, provides retailers with the insights they need to make data-driven decisions that can boost sales, optimize marketing strategies, and enhance customer experiences.</p>
+									<p>Whether you're a small e-commerce startup or an established online retailer, having a clear view of your sales data is essential. The insights gained from this dashboard can help you stay ahead of the competition and continue to grow your business.</p>
+									<p>So, take a step towards data-driven success and consider implementing a similar dashboard for your online retail venture. Your future business decisions will thank you for it.</p>
+								</section>
+							</section>
+
+					</div>
+
+	<!-- Footer -->
+	<footer id="footer">
+		<section>
+			<form method="post" action="#">
+				<div class="fields">
+					<div class="field">
+						<label for="name">Name</label>
+						<input type="text" name="name" id="name" />
+					</div>
+					<div class="field">
+						<label for="email">Email</label>
+						<input type="text" name="email" id="email" />
+					</div>
+					<div class="field">
+						<label for="message">Message</label>
+						<textarea name="message" id="message" rows="3"></textarea>
+					</div>
+				</div>
+				<ul class="actions">
+					<li><input type="submit" value="Send Message" /></li>
+				</ul>
+			</form>
+		</section>
+		<section class="split contact">
+			<section class="alt">
+				<h3>Address</h3>
+				<p>Sangkanayu (55352), Mrebet, Purbalingga<br />
+				Central Java, Indonesia</p>
+			</section>
+			<section>
+				<h3>Phone</h3>
+				<p><a href="#">(+62) 822-4263-8516</a></p>
+			</section>
+			<section>
+				<h3>Email</h3>
+				<p><a href="#">gustiyan98@gmail.com</a></p>
+			</section>
+			<section>
+				<h3>Social</h3>
+				<ul class="icons alt">
+					<li><a href="https://www.linkedin.com/in/gustiyaniz" target="_blank" class="icon brands alt fa-linkedin"><span class="label">Linkedin</span></a></li>
+					<li><a href="https://gustiyaniz.medium.com/" target="_blank" class="icon brands alt fa-medium"><span class="label">Medium</span></a></li>
+					<li><a href="https://t.me/gustiyaniz" target="_blank" class="icon brands alt fa-telegram"><span class="label">Telegram</span></a></li>
+					<li><a href="https://github.com/gustiyaniz/" target="_blank" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+				</ul>
+			</section>
+		</section>
+	</footer>
+
+<!-- Copyright -->
+	<div id="copyright">
+		<ul>Copyright &copy; Gustiyan Islahuzaman | 2023</ul>
+	</div>
+
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
