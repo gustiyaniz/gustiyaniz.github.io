@@ -1,258 +1,146 @@
-/*
-	Massively by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
+/*=-=-==-= navbar-scroll  =-=-=-=====-*/
 
-(function($) {
+$(document).ready(function(){
+  $(window).scroll(function() { // check if scroll event happened
+    if ($(document).scrollTop() > 150) { // check if user scrolled more than 450 from top of the browser window
+      $(".navbar-solid-state").css({"background-color":"#242d44","color": "#ffffff"}); // if yes, then change the color of class "navbar-fixed-top" to white (#f8f8f8)
+      $(".a-transparent").css({"background-color":"transparent","color": "transparent"});
+    } else {
+      $(".navbar-solid-state").css("background-color", "transparent"); // if not, change it back to transparent
+      $(".a-transparent").css({"background-color":"transparent","color": "transparent"});
+    }
+  });
+});
 
-	var	$window = $(window),
-		$body = $('body'),
-		$wrapper = $('#wrapper'),
-		$header = $('#header'),
-		$nav = $('#nav'),
-		$main = $('#main'),
-		$navPanelToggle, $navPanel, $navPanelInner;
+/*=-=-=-===-==-=  Navbar pop-up =-=-=-=-=-=-=-=*/
 
-	// Breakpoints.
-		breakpoints({
-			default:   ['1681px',   null       ],
-			xlarge:    ['1281px',   '1680px'   ],
-			large:     ['981px',    '1280px'   ],
-			medium:    ['737px',    '980px'    ],
-			small:     ['481px',    '736px'    ],
-			xsmall:    ['361px',    '480px'    ],
-			xxsmall:   [null,       '360px'    ]
-		});
+$(document).ready(function(){
 
-	/**
-	 * Applies parallax scrolling to an element's background image.
-	 * @return {jQuery} jQuery object.
-	 */
-	$.fn._parallax = function(intensity) {
+   var $window = $(window),
+        $body = $('body'),
+        $header = $('#header'),
+        $banner = $('#banner');
 
-		var	$window = $(window),
-			$this = $(this);
+    /* // Disable animations/transitions until the page has loaded.
+      $body.addClass('is-loading');
 
-		if (this.length == 0 || intensity === 0)
-			return $this;
+      $window.on('load', function() {
+        window.setTimeout(function() {
+          $body.removeClass('is-loading');
+        }, 100);
+      });*/
 
-		if (this.length > 1) {
 
-			for (var i=0; i < this.length; i++)
-				$(this[i])._parallax(intensity);
+    // Menu.
+      var $menu = $('#menu');
 
-			return $this;
+      $menu._locked = false;
 
-		}
+      $menu._lock = function() {
 
-		if (!intensity)
-			intensity = 0.25;
+        if ($menu._locked)
+          return false;
 
-		$this.each(function() {
+        $menu._locked = true;
 
-			var $t = $(this),
-				$bg = $('<div class="bg"></div>').appendTo($t),
-				on, off;
+        window.setTimeout(function() {
+          $menu._locked = false;
+        }, 350);
 
-			on = function() {
-
-				$bg
-					.removeClass('fixed')
-					.css('transform', 'matrix(1,0,0,1,0,0)');
-
-				$window
-					.on('scroll._parallax', function() {
-
-						var pos = parseInt($window.scrollTop()) - parseInt($t.position().top);
-
-						$bg.css('transform', 'matrix(1,0,0,1,0,' + (pos * intensity) + ')');
-
-					});
-
-			};
-
-			off = function() {
+        return true;
 
-				$bg
-					.addClass('fixed')
-					.css('transform', 'none');
+      };
 
-				$window
-					.off('scroll._parallax');
+      $menu._show = function() {
 
-			};
+        if ($menu._lock())
+          $body.addClass('is-menu-visible');
 
-			// Disable parallax on ..
-				if (browser.name == 'ie'			// IE
-				||	browser.name == 'edge'			// Edge
-				||	window.devicePixelRatio > 1		// Retina/HiDPI (= poor performance)
-				||	browser.mobile)					// Mobile devices
-					off();
+      };
 
-			// Enable everywhere else.
-				else {
+      $menu._hide = function() {
 
-					breakpoints.on('>large', on);
-					breakpoints.on('<=large', off);
+        if ($menu._lock())
+          $body.removeClass('is-menu-visible');
 
-				}
+      };
 
-		});
-
-		$window
-			.off('load._parallax resize._parallax')
-			.on('load._parallax resize._parallax', function() {
-				$window.trigger('scroll');
-			});
-
-		return $(this);
-
-	};
-
-	// Play initial animations on page load.
-		$window.on('load', function() {
-			window.setTimeout(function() {
-				$body.removeClass('is-preload');
-			}, 100);
-		});
-
-	// Scrolly.
-		$('.scrolly').scrolly();
-
-	// Background.
-		$wrapper._parallax(0.925);
-
-	// Nav Panel.
-
-		// Toggle.
-			$navPanelToggle = $(
-				'<a href="#navPanel" id="navPanelToggle">Menu</a>'
-			)
-				.appendTo($wrapper);
-
-			// Change toggle styling once we've scrolled past the header.
-				$header.scrollex({
-					bottom: '5vh',
-					enter: function() {
-						$navPanelToggle.removeClass('alt');
-					},
-					leave: function() {
-						$navPanelToggle.addClass('alt');
-					}
-				});
-
-		// Panel.
-			$navPanel = $(
-				'<div id="navPanel">' +
-					'<nav>' +
-					'</nav>' +
-					'<a href="#navPanel" class="close"></a>' +
-				'</div>'
-			)
-				.appendTo($body)
-				.panel({
-					delay: 500,
-					hideOnClick: true,
-					hideOnSwipe: true,
-					resetScroll: true,
-					resetForms: true,
-					side: 'right',
-					target: $body,
-					visibleClass: 'is-navPanel-visible'
-				});
-
-			// Get inner.
-				$navPanelInner = $navPanel.children('nav');
-
-			// Move nav content on breakpoint change.
-				var $navContent = $nav.children();
-
-				breakpoints.on('>medium', function() {
-
-					// NavPanel -> Nav.
-						$navContent.appendTo($nav);
-
-					// Flip icon classes.
-						$nav.find('.icons, .icon')
-							.removeClass('alt');
-
-				});
-
-				breakpoints.on('<=medium', function() {
-
-					// Nav -> NavPanel.
-						$navContent.appendTo($navPanelInner);
-
-					// Flip icon classes.
-						$navPanelInner.find('.icons, .icon')
-							.addClass('alt');
-
-				});
-
-			// Hack: Disable transitions on WP.
-				if (browser.os == 'wp'
-				&&	browser.osVersion < 10)
-					$navPanel
-						.css('transition', 'none');
-
-	// Intro.
-		var $intro = $('#intro');
-
-		if ($intro.length > 0) {
-
-			// Hack: Fix flex min-height on IE.
-				if (browser.name == 'ie') {
-					$window.on('resize.ie-intro-fix', function() {
-
-						var h = $intro.height();
-
-						if (h > $window.height())
-							$intro.css('height', 'auto');
-						else
-							$intro.css('height', h);
-
-					}).trigger('resize.ie-intro-fix');
-				}
-
-			// Hide intro on scroll (> small).
-				breakpoints.on('>small', function() {
-
-					$main.unscrollex();
-
-					$main.scrollex({
-						mode: 'bottom',
-						top: '25vh',
-						bottom: '-50vh',
-						enter: function() {
-							$intro.addClass('hidden');
-						},
-						leave: function() {
-							$intro.removeClass('hidden');
-						}
-					});
-
-				});
-
-			// Hide intro on scroll (<= small).
-				breakpoints.on('<=small', function() {
-
-					$main.unscrollex();
-
-					$main.scrollex({
-						mode: 'middle',
-						top: '15vh',
-						bottom: '-15vh',
-						enter: function() {
-							$intro.addClass('hidden');
-						},
-						leave: function() {
-							$intro.removeClass('hidden');
-						}
-					});
-
-			});
-
-		}
-
-})(jQuery);
+      $menu._toggle = function() {
+
+        if ($menu._lock())
+          $body.toggleClass('is-menu-visible');
+
+      };
+
+      $menu
+        .appendTo($body)
+        .on('click', function(event) {
+
+          event.stopPropagation();
+
+          // Hide.
+            $menu._hide();
+
+        })
+        .find('.inner')
+          .on('click', '.close', function(event) {
+
+            event.preventDefault();
+            event.stopPropagation();
+            event.stopImmediatePropagation();
+
+            // Hide.
+              $menu._hide();
+
+          })
+          .on('click', function(event) {
+            event.stopPropagation();
+          })
+          .on('click', 'a', function(event) {
+
+            var href = $(this).attr('href');
+
+            event.preventDefault();
+            event.stopPropagation();
+
+            // Hide.
+              $menu._hide();
+
+            // Redirect.
+              window.setTimeout(function() {
+                window.location.href = href;
+              }, 350);
+
+          });
+
+      $body
+        .on('click', 'a[href="#menu"]', function(event) {
+
+          event.stopPropagation();
+          event.preventDefault();
+
+          // Toggle.
+            $menu._toggle();
+
+        })
+        .on('keydown', function(event) {
+
+          // Hide on escape.
+            if (event.keyCode == 27)
+              $menu._hide();
+
+        });
+});
+
+
+/*preloader*/
+
+jQuery(document).ready(function($) {  
+  $(window).load(function(){
+    var $body = $('body');
+    $('#preloader').fadeOut('slow',function(){
+      $(this).remove();
+    });
+    $('.body-content').fadeIn(2500);
+  });
+});

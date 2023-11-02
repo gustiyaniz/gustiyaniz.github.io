@@ -1,1 +1,0 @@
-# gustiyaniz.github.io
