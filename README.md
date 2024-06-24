@@ -1,5 +1,7 @@
 # Gustiyan Islahuzaman - Data Analyst Portfolio
 
+![](https://komarev.com/ghpvc/?username=gustiyaniz)
+
 Welcome to my personal portfolio website! This site showcases my skills, experience, and projects as a Data Analyst with a focus on Power BI dashboards. 
 
 ## Website Overview
